@@ -49,6 +49,7 @@ void add_user()
     gets(user_pnew->name);
     printf("Enter the new user id : ");
     scanf("%d", &user_pnew->id);
+    user_pnew->req=NULL;
     user_pnew->next=NULL;
 }
 void remove_user()

@@ -56,8 +56,10 @@ void show_user() {
                 printf("No library card available");
             else
             printf("Library card ID : %d",current->card_id);
+            break;
         }
-        current = current->next;
+        else
+            current = current->next;
     }
 }
 struct bor_book* checker=NULL;
@@ -117,17 +119,17 @@ void buy_book()
     int ent_id,ent_card_id,ent_card_pass,total=0,v,m;
     list_books();
     struct books *curent = head;
-     current = user_head;
+     //current = user_head;
     while(1) {
         printf("Enter the book id You want");
         scanf("%d", &ent_id);
-        if (curent->book_id == ent_id)
-        {
-            total+=curent->price;
+        while(curent) {
+            if (curent->book_id == ent_id) {
+                total += curent->price;
+                break;
+            } else
+                curent = curent->next;
         }
-        else
-            curent=curent->next;
-
         printf("if you want to buy another book enter 0 , else enter any number");
         scanf("%d",&v);
         if(v)
